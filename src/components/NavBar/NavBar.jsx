@@ -7,7 +7,7 @@ import "../NavBar/_NavBar.scss";
 
 
 
-const NavBar = () => {
+function NavBar  ()  {
     const isConnected = useSelector((state) => state.auth.token);
     const firstname = useSelector((state) => state.user.userData.firstname);
 
@@ -29,7 +29,7 @@ const NavBar = () => {
                {isConnected ? (
                     <div className='connected'>
                         <Link to='/profile'>
-                            <i className='fa-solid fa-2x fa-circle-user' />
+                            <i className='fa fa-user-circle sign-in-icon' />
                             <p>{firstname}</p>
                         </Link>
                         <Link to='/' onClick={logoutHandler}>

@@ -1,25 +1,73 @@
+// Define styles for sign-in button
 .sign-in-button {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-top: 1rem;
-    border-color: #00bc77;
-    background-color: #00bc77;
-    color: #fff;
+  background-color: #00bc77;
+  border: none; // Removes default border 
+  color: #fff;
+  cursor: pointer; // Hand cursor on hover
+  display: block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-top: 1rem;
+  padding: 0.5rem; 
+  width: 100%;
+}
+
+// Define styles for sign-in content container
+.sign-in-content {
+  background-color: white;
+  box-sizing: border-box; // Ensures padding is included in width
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 3rem auto 0; // Combines margin-top with margin shorthand
+  padding: 2rem;
+  width: 18.75rem; // 300px equivalent
+
+  // Nested styles for elements inside sign-in content
+  i.sign-in-icon {
+    font-size: 1.2rem; 
   }
-  
-  .sign-in-content {
-    box-sizing: border-box;
-    background-color: white;
-    width: 300px;
-    margin: 0 auto;
-    margin-top: 3rem;
-    padding: 2rem;
-  
-    .sign-in-icon {
-      font-size: 5rem;
+
+  form {
+    .input-wrapper {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+      text-align: left;
+
+      label {
+        font-weight: bold;
+      }
+
+      input {
+        font-size: 1.2rem;
+        padding: 0.3125rem;
+      }
+    }
+
+    .input-remember {
+      align-items: center; // Aligns checkbox and label along the cross axis
+      display: flex;
+
+      label {
+        margin-left: 0.25rem;
+      }
+    }
+
+    .error-message {
+      color: red;
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-top: 25px;
     }
   }
-  
+}
+
+.bg-dark {
+  background-color: #12002b;
+}
+
+main{
+  flex: 1;
+}

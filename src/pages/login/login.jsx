@@ -1,5 +1,6 @@
 import React from 'react';
 import "../login/_login.scss";
+import "../../assets/_main.scss";
 
 const Login = () => {
     // Add logic to handle form submission

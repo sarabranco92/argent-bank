@@ -4,6 +4,7 @@
     background-position: 0 -50px;
     background-size: cover;
     background-repeat: no-repeat;
+    object-fit: cover;
     height: 300px;
     position: relative;
   
@@ -23,6 +24,7 @@
       }
   
       .text {
+        margin-top: 1.2rem;
         margin-bottom: 0;
         font-size: 0.9rem;
       }

@@ -4,47 +4,21 @@ $main-color: #2c3e50;
 $background-dark: #12002b;
 
 // Global HTML styles
-html {
+html, body {
   font-family: $font-stack;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $main-color;
-}
-
-// Global body styles
-body {
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  
+  padding: 0;
+ 
 }
 
-// Utility classes
-.bg-dark {
-  background-color: $background-dark;
-}
-
-.sr-only {
-  border: 0 !important;
-  clip: rect(1px, 1px, 1px, 1px) !important; // 1
-  -webkit-clip-path: inset(50%) !important;
-  clip-path: inset(50%) !important; // 2
-  height: 1px !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  padding: 0 !important;
-  position: absolute !important;
-  width: 1px !important;
-  white-space: nowrap !important; // 3
-}
 
 // Global styles
 * {
-  box-sizing: border-box;
   font-family: $font-stack;
   margin: 0;
-  padding: 0;
+  
 }
 
 // Link styles
@@ -52,4 +26,19 @@ a {
   text-decoration: none;
 }
 
+// In your _main.scss file
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; // This makes sure that your app container is at least as tall as the viewport
+}
 
+// Make sure the Routes container expands
+.routes-container {
+  flex: 1; // This will make sure that your Routes container takes up all available space
+}
+
+// Footer should not shrink
+footer {
+  flex-shrink: 0;
+}
