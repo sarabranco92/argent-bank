@@ -13,7 +13,7 @@ const Login = () => {
     
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const loginStatus = useSelector((state) => state.auth.isLoggedIn); // Assuming 'isLoggedIn' is in your auth state
+    const loginStatus = useSelector((state) => state.auth.isLoggedIn); 
 
 
     const handleLogin = (e) => {

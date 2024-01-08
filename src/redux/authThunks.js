@@ -18,7 +18,7 @@ export const loginUser = createAsyncThunk(
             if (response.ok) {
                 const data = await response.json();
                 dispatch(loginSuccess(data));
-                // Do not set sessionStorage or localStorage here; handle it as a result of the state change
+                
             } else {
                 throw new Error('Login failed');
             }
