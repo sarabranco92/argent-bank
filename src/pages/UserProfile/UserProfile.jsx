@@ -1,19 +1,24 @@
+// UserProfile.js
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Account from '../../components/Account/Account';
 
 const UserProfile = () => {
-    // Add logic for user details
+    const userData = useSelector((state) => state.user.userData);
+
     return (
         <main className="main bg-dark">
             <div className="header">
-                <h1>Welcome back<br />Tony Jarvis!</h1>
+                <h1>Welcome back<br />{userData.username}!</h1>
                 <button className="edit-button">Edit Name</button>
             </div>
-            {/* Example usage, replace with dynamic content */}
-            <Account title="Argent Bank Checking (x8349)" amount="$2,082.79" description="Available Balance" />
-            {/* Add more AccountSummary components as needed */}
+            {/* Dynamic Account components */}
+            {userData.accounts && userData.accounts.map(account => (
+                <Account key={account.id} title={account.title} amount={account.amount} description={account.description} />
+            ))}
         </main>
     );
 };
 
-export default UserProfile;
+export default UserProfile
+

@@ -2,14 +2,17 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../../assets/img/argentBankLogo.png';
-import { logout } from '../../redux/actions/authAction';
+import { logout } from '../../redux/reducers/authSlice';
 import "../NavBar/_NavBar.scss";
 
 
 
+
+
 function NavBar  ()  {
-    const isConnected = useSelector((state) => state.auth.token);
-    const firstname = useSelector((state) => state.user.userData.firstname);
+    const isConnected = useSelector((state) => state.auth?.token);
+const firstname = useSelector((state) => state.user?.userData?.firstname);
+
 
     const dispatch = useDispatch();
     const navigate = useNavigate();

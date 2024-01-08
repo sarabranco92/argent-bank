@@ -12,7 +12,7 @@ import Footer from './components/Footer/Footer';
 import "../src/assets/_main.scss";
 
 function App() {
-    const isConnected = useSelector((state) => state.auth.isConnected);
+    const isConnected = useSelector((state) => state.auth?.isConnected);
     return (
         <div className="app-container">
             <NavBar />
