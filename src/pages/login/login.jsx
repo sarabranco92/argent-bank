@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
 import { loginUser } from '../../redux/authThunks';
 
 import "../login/_login.scss";
@@ -12,23 +11,23 @@ const Login = () => {
     const [password, setPassword] = useState('');
     
     const dispatch = useDispatch();
+
     const navigate = useNavigate();
-    const loginStatus = useSelector((state) => state.auth.isLoggedIn); 
 
+    const handleLogin = async (e) => {
+        e.preventDefault();
 
-    const handleLogin = (e) => {
-        
-        e.preventDefault(); // Prevent default form submission
-        dispatch(loginUser({ email, password }));
-        
-    };
-    
-    useEffect(() => {
-        if (loginStatus) {
+        try {
+            await dispatch(loginUser({ email, password })).unwrap();
             navigate('/user'); 
+        } catch (error) {
+            // Handle login failure
+            console.error('Login failed:', error);
         }
-    }, [loginStatus, navigate]);
-
+    };
+        
+    
+   
     return (
         <main className="main bg-dark">
             <section className="sign-in-content">

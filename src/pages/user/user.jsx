@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Account from '../../components/Account/Account';
 
-const UserProfile = () => {
+const User = () => {
     const userData = useSelector((state) => state.user.userData);
 
     return (
@@ -20,5 +20,5 @@ const UserProfile = () => {
     );
 };
 
-export default UserProfile
+export default User
 

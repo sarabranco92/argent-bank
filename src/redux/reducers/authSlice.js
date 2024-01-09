@@ -21,12 +21,12 @@ export const authSlice = createSlice({
       state.user = null;
       state.error = action.payload;
     },
+    // Define the logout reducer inside the reducers object
     logout: (state) => {
       state.isLoggedIn = false;
       state.user = null;
       state.error = null;
     },
-    
   },
 });
 

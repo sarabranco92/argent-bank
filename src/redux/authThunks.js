@@ -1,29 +1,20 @@
-// src/redux/authThunks.js
+import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { loginSuccess, loginFailed } from './reducers/authSlice';
+
 
 export const loginUser = createAsyncThunk(
     'auth/loginUser',
-    async ({ email, password }, { dispatch }) => {
+    async ({ email, password }, thunkAPI) => {
         try {
-            console.log("Sending Request:", JSON.stringify({ email, password })); // Debug log
-            const response = await fetch('http://mongodb://localhost/argentBankDB', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
+            const response = await axios.post('http://localhost:3001/api/v1/user/login', {
+                email,
+                password
             });
 
-            if (response.ok) {
-                const data = await response.json();
-                dispatch(loginSuccess(data));
-                
-            } else {
-                throw new Error('Login failed');
-            }
+            
+            return thunkAPI.fulfillWithValue(response.data);
         } catch (error) {
-            dispatch(loginFailed(error.message));
+            return thunkAPI.rejectWithValue(error.response?.data?.message || error.message);
         }
     }
 );
