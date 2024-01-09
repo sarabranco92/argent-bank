@@ -5,6 +5,8 @@ import Account from '../../components/Account/Account';
 
 const User = () => {
     const userData = useSelector((state) => state.user.userData);
+    const tokken = useSelector((state) => state.auth.tokken);
+    console.log(tokken)
 
     return (
         <main className="main bg-dark">

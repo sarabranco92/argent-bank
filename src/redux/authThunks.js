@@ -2,6 +2,8 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 
+
+
 export const loginUser = createAsyncThunk(
     'auth/loginUser',
     async ({ email, password }, thunkAPI) => {
@@ -11,7 +13,11 @@ export const loginUser = createAsyncThunk(
                 password
             });
 
+            console.log('cldjgkdfn')
             
+    
+
+
             return thunkAPI.fulfillWithValue(response.data);
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response?.data?.message || error.message);

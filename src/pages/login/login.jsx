@@ -1,33 +1,31 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+
 import { loginUser } from '../../redux/authThunks';
+import { loginSuccess } from '../../redux/reducers/authSlice';
 
 import "../login/_login.scss";
 import "../../assets/_main.scss";
 
-const Login = () => {
+function Login ()  {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     
     const dispatch = useDispatch();
 
-    const navigate = useNavigate();
+   
 
     const handleLogin = async (e) => {
         e.preventDefault();
-
-        try {
-            await dispatch(loginUser({ email, password })).unwrap();
-            navigate('/user'); 
-        } catch (error) {
-            // Handle login failure
-            console.error('Login failed:', error);
-        }
-    };
-        
+console.log('cenas')
     
-   
+            const response = await dispatch(loginUser({ email, password })).unwrap();
+            // Dispatch loginSuccess avec les données de réponse
+            console.log(response.body.token)
+            dispatch(loginSuccess({ tokken: response.body.token, user: response.user }));
+            
+        
+    };
     return (
         <main className="main bg-dark">
             <section className="sign-in-content">
