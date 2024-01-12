@@ -25,7 +25,7 @@ export const userSlice = createSlice({
     builder
       .addCase(updateUserName.fulfilled, (state, action) => {
         // Update userData with the payload
-        state.userData = { ...state.userData, ...action.payload };
+        state.userData.userName = action.payload.newUserName;
       })
       .addCase(fetchUserProfile.fulfilled, (state, action) => {
         state.userData = action.payload;

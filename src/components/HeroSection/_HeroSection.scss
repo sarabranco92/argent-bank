@@ -1,12 +1,14 @@
 // src/components/HeroSection/HeroSection.scss
 .hero {
-    background-image: url('../../assets/img/bank-tree.jpeg');
+    background-image: url('../../assets/img/bank-tree.webp');
     background-position: 0 -50px;
     background-size: cover;
     background-repeat: no-repeat;
     object-fit: cover;
     height: 300px;
     position: relative;
+
+    
   
     .hero-content {
       position: relative;

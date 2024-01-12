@@ -62,9 +62,7 @@ export const updateUserName = createAsyncThunk(
         }
       );
       console.log("Update response:", response.data); // Logging the response
-      return thunkAPI.fulfillWithValue({
-        body: { token: response.data.body.token }, 
-      });
+      return { newUserName }; 
     } catch (error) {
       console.error("Update error:", error.response || error); 
       return thunkAPI.rejectWithValue(error.response?.data?.message || error.message);

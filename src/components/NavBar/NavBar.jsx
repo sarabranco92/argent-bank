@@ -2,7 +2,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import Logo from '../../assets/img/argentBankLogo.png';
+import Logo from '../../assets/img/argentBankLogo.webp';
 import { logout } from '../../redux/reducers/authSlice';
 import "../NavBar/_NavBar.scss";
 
@@ -33,7 +33,7 @@ function NavBar() {
                     </Link>
                     <Link to='/' onClick={logoutHandler}>
                         <i className="fa-solid fa-arrow-right-from-bracket" />
-                        <p>Sign out</p>
+                        <p>Sign Out</p>
                     </Link>
                 </div>
             ) : (

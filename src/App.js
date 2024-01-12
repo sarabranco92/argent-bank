@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
 import { loginSuccess } from './redux/reducers/authSlice';
+import { fetchUserProfile } from './redux/authThunks'; // import the action to fetch user data
 
 
 import HomePage from './pages/home/home';
@@ -22,10 +23,15 @@ function App() {
     useEffect(() => {
         const token = sessionStorage.getItem('token');
         if (token) {
-            dispatch(loginSuccess({ token }));
+            // Dispatch an action to fetch user profile data
+            dispatch(fetchUserProfile(token))
+                .then(action => {
+                    if (action.type.endsWith('fulfilled')) {
+                        dispatch(loginSuccess({ token, user: action.payload }));
+                    }
+                });
         }
     }, [dispatch]);
-
 
     return (
         <div className="app-container">
