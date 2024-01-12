@@ -5,7 +5,7 @@ const initialState = {
   isLoggedIn: false,
   user: null,
   error: null,
-  tokken: null,
+  token: null,
 };
 
 export const authSlice = createSlice({
@@ -16,15 +16,11 @@ export const authSlice = createSlice({
 
     loginSuccess: (state, action) => {
       state.isLoggedIn = true;
-      state.tokken = action.payload;
+      state.token = action.payload.token; // Access token directly
+      state.user = action.payload.user; 
       state.error = null;
     },
-    loginFailed: (state, action) => {
-      state.isLoggedIn = false;
-      state.user = null;
-      state.error = action.payload;
-    },
-    // Define the logout reducer inside the reducers object
+    
     logout: (state) => {
       state.isLoggedIn = false;
       state.user = null;
@@ -33,6 +29,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const { loginSuccess, loginFailed, logout } = authSlice.actions;
+export const { loginSuccess, logout } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -1,31 +1,41 @@
+
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { loginUser } from '../../redux/authThunks';
 import { loginSuccess } from '../../redux/reducers/authSlice';
+import { fetchUserProfile } from '../../redux/authThunks';
+import { setUserProfile } from '../../redux/reducers/userSlice';
 
 import "../login/_login.scss";
 import "../../assets/_main.scss";
 
-function Login ()  {
+function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    
+
     const dispatch = useDispatch();
 
-   
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-console.log('cenas')
+
+// In your login component
+const handleLogin = async (e) => {
+    e.preventDefault();
     
-            const response = await dispatch(loginUser({ email, password })).unwrap();
-            // Dispatch loginSuccess avec les données de réponse
-            console.log(response.body.token)
-            dispatch(loginSuccess({ tokken: response.body.token, user: response.user }));
-            
-        
-    };
+    const response = await dispatch(loginUser({ email, password })).unwrap();
+    dispatch(loginSuccess({
+      token: response.token,
+      user: {} 
+    }));
+    
+    // Fetch the user profile after successful login
+    dispatch(fetchUserProfile(response.token)).then((action) => {
+      if (action.type === 'user/fetchUserProfile/fulfilled') {
+        dispatch(setUserProfile(action.payload));
+      }
+    });
+  };
+  
     return (
         <main className="main bg-dark">
             <section className="sign-in-content">
@@ -51,5 +61,5 @@ console.log('cenas')
     );
 };
 
-export default Login;     
+export default Login;
 

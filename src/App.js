@@ -1,6 +1,9 @@
-import React from 'react';
+
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { loginSuccess } from './redux/reducers/authSlice';
+
 
 import HomePage from './pages/home/home';
 import Login from './pages/login/login';
@@ -14,6 +17,15 @@ import "../src/assets/_main.scss";
 
 function App() {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const token = sessionStorage.getItem('token');
+        if (token) {
+            dispatch(loginSuccess({ token }));
+        }
+    }, [dispatch]);
+
 
     return (
         <div className="app-container">

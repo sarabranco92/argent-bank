@@ -1,29 +1,37 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { updateUserName, fetchUserProfile } from '../authThunks'; // Make sure this path is correct
 
-// Initial user state
 const initialState = {
-    status: 'VOID',
-    userData: {}
+  status: 'VOID',
+  userData: {},
 };
 
 export const userSlice = createSlice({
-    name: 'user',
-    initialState,
-    reducers: {
-        getUserProfile: (state, action) => {
-            state.status = 'SUCCEEDED';
-            state.userData = action.payload;
-        },
-        editUsername: (state, action) => {
-            state.status = 'MODIFIED';
-            state.userData.username = action.payload;
-        },
-        logout: () => initialState
-    }
+  name: 'user',
+  initialState,
+  reducers: {
+    setUserProfile: (state, action) => {
+      state.userData = action.payload;
+    },
+    setUsername: (state, action) => {
+      if (state.userData.body) {
+        state.userData.body.userName = action.payload.userName;
+      } else {
+        state.userData.body = { userName: action.payload.userName };
+      }
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(updateUserName.fulfilled, (state, action) => {
+        // Update userData with the payload
+        state.userData = { ...state.userData, ...action.payload };
+      })
+      .addCase(fetchUserProfile.fulfilled, (state, action) => {
+        state.userData = action.payload;
+      });
+  },
 });
 
-// Export the action creators and the reducer
-export const { getUserProfile, editUsername, logout } = userSlice.actions;
+export const { setUserProfile, setUsername } = userSlice.actions;
 export default userSlice.reducer;
-
-        
