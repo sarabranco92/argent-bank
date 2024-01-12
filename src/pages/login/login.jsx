@@ -17,17 +17,24 @@ function Login() {
     const dispatch = useDispatch();
 
 
-
-// In your login component
 const handleLogin = async (e) => {
     e.preventDefault();
     
+    const rememberMe = document.getElementById('remember-me').checked;
+    console.log("Remember Me Checked:", rememberMe);
+
     const response = await dispatch(loginUser({ email, password })).unwrap();
     dispatch(loginSuccess({
       token: response.token,
       user: {} 
     }));
     
+
+// Save the token to local storage if 'Remember Me' is checked
+if (rememberMe) {
+    localStorage.setItem('userToken', response.token);
+}
+
     // Fetch the user profile after successful login
     dispatch(fetchUserProfile(response.token)).then((action) => {
       if (action.type === 'user/fetchUserProfile/fulfilled') {

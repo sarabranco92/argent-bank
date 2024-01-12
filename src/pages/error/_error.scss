@@ -1,6 +1,9 @@
 .error-page { 
 background-color: #b6ffec;
- 
+.error { min-height: 610px;
+  width: 100%;
+  @media (max-width: 920px) {min-height: 680px;}
+  @media (min-width: 1900px) {min-height: 720px;}
     .green-error { 
                    width: 50%;
                  
@@ -14,10 +17,11 @@ background-color: #b6ffec;
 
 
     .button-404 { align-items: center;
-                  background-color: #00bc77;
-                  border-radius: 50%;
-                  border-color: #00bc77;
-                  color: #fff;
+                  background-color: #b6ffec;
+                  border-radius: 10%;
+                  border-color: #30883a;
+                  
+                  color: ffff;
                   font-size: 1.1rem;
                   font-weight: bold;
                   margin-bottom: 2rem;
@@ -26,3 +30,4 @@ background-color: #b6ffec;
                   padding: 0.8rem;
                 }
   }
+}
