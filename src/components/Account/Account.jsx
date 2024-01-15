@@ -1,6 +1,7 @@
 import React from 'react';
 import "../Account/_Account.scss";
 
+
 const Account = ({ title, amount, description }) => {
     return (
         <section className="account">

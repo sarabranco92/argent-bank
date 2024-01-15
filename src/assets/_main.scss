@@ -1,9 +1,7 @@
-// Define variables
 $font-stack: Avenir, Helvetica, Arial, sans-serif;
 $main-color: #2c3e50;
 $background-dark: #12002b;
 
-// Global HTML styles
 html, body {
   font-family: $font-stack;
   text-align: center;
@@ -14,26 +12,24 @@ html, body {
 }
 
 
-// Global styles
 * {
   font-family: $font-stack;
   margin: 0;
   
 }
 
-// Link styles
 a {
   text-decoration: none;
 }
 
-// In your _main.scss file
+
 .app-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; // This makes sure that your app container is at least as tall as the viewport
+  min-height: 100vh; 
 }
 
-// Make sure the Routes container expands
+
 .routes-container {
   flex: 1; // This will make sure that your Routes container takes up all available space
 }

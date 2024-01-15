@@ -4,6 +4,7 @@ import { updateUserName } from '../../redux/authThunks';
 import Account from '../../components/Account/Account';
 import "../user/_user.scss";
 import "../../assets/_main.scss";
+import AccountData from "../../data/Account.json";
 
 const User = () => {
 
@@ -51,7 +52,7 @@ const User = () => {
                     </div>
                 ) : (
                     <div>
-                        <h2>Profile Settings</h2>
+                        <h2>Edit User Info</h2>
                         <form onSubmit={handleSubmit}>
                         <div className="edit-profile">
                             <label htmlFor="username">User name:</label>
@@ -95,8 +96,13 @@ const User = () => {
                 )}
             </div>
 
-            {userData.accounts && userData.accounts.map(account => (
-                <Account key={account.id} title={account.title} amount={account.amount} description={account.description} />
+            {AccountData.map((data) => (
+                <Account 
+                key={data.id} 
+                title={data.title} 
+                amount={data.amount} 
+                description={data.description} 
+                />
             ))}
         </main>
     );

@@ -39,15 +39,15 @@
       }
   }
 
-  @media (max-width: 920px) {
+  @media (max-width: 600px) {
       
       .hero-content {
         position: absolute;
         top: 50px;
-        width: 12rem;
-        margin: 2rem;
+        width: 10rem;
+        margin: 0rem;
    
-  
+ 
         .subtitle {
           font-size: 1rem;
         }
