@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
 import { loginSuccess } from './redux/reducers/authSlice';
@@ -36,14 +36,16 @@ function App() {
     return (
         <div className="app-container">
             <NavBar />
-            <BrowserRouter>
+            
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={isLoggedIn ? <Navigate to="/user" /> : <Login />} />
-                    <Route path="/user" element={isLoggedIn ? <User /> : <Navigate to="/login" />} />
-                     <Route path="*" element={<Error />} />
+                <Route path="/user" element={isLoggedIn ? <User /> : <Navigate to="/login" />} />
+                <Route path="*" element={<Error />} />
+                
+
                 </Routes>
-           </BrowserRouter>
+           
             <Footer />
         </div>
     );
