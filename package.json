@@ -2,7 +2,7 @@
   "name": "argent-bank",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sarabranco92.github.io/argent-bank",
+  "homepage": "https://sarabranco92.github.io/argent-bank/",
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
     "@testing-library/jest-dom": "^5.17.0",
