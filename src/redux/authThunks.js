@@ -14,7 +14,7 @@ export const loginUser = createAsyncThunk(
 
       sessionStorage.setItem('token', response.data.body.token);
 
-      // In loginUser thunk
+      
       return thunkAPI.fulfillWithValue(response.data.body); 
 
     } catch (error) {

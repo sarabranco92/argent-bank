@@ -21,7 +21,6 @@ function HomePage () {
             <section className="features">
                 <h2 className="sr-only">Features</h2>
                 {ItemData.map((data) => (
-                        /* Return item component */
                         < Feature 
                             key={data.id}
                             image={imageData[data.image]}

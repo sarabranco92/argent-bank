@@ -37,7 +37,7 @@ const handleLogin = async (e) => {
         // Dispatch login success action
         dispatch(loginSuccess({
             token: response.token,
-            user: {} // Você pode querer atualizar isto com informações do usuário, se disponíveis
+            user: {} 
         }));
 
         // Fetch the user profile after successful login
@@ -47,7 +47,6 @@ const handleLogin = async (e) => {
             }
         });
     } catch (error) {
-        // Lidar com erros de login (por exemplo, credenciais inválidas)
         setErrorMessage(error.message || 'Failed to login. Please try again.');
     }
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import "../HeroSection/_HeroSection.scss"; // Assuming the SCSS file is in the same directory
+import "../HeroSection/_HeroSection.scss"; 
 import heroImageSmall from '../../assets/img/bank-tree-small.webp';
 import heroImageMedium from '../../assets/img/bank-tree-medium.webp';
 import heroImageLarge from '../../assets/img/bank-tree-large.webp';

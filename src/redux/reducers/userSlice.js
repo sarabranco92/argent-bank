@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { updateUserName, fetchUserProfile } from '../authThunks'; // Make sure this path is correct
-
+import { updateUserName, fetchUserProfile } from '../authThunks'; 
 const initialState = {
   status: 'VOID',
   userData: {},
