@@ -1,5 +1,5 @@
 
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, HashRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
 import { loginSuccess } from './redux/reducers/authSlice';
@@ -35,6 +35,7 @@ function App() {
 
     return (
         <div className="app-container">
+            <HashRouter>
             <NavBar />
             <Routes>
                 <Route path="/" element={<HomePage />} />
@@ -43,6 +44,7 @@ function App() {
                 <Route path="*" element={<Error />} />
             </Routes>
             <Footer />
+            </HashRouter>
         </div>
     );
 }
