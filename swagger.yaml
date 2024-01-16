@@ -99,7 +99,9 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /user/account:
+
+          
+  /user/account:   # Endpoint for retrieving all user accounts
     post:
       tags:
         - Accounts and Transactions Module
@@ -118,7 +120,8 @@ paths:
           description: Unauthorized user
         '500':
           description: Internal Server Error
-  /account/{accountID}/transactions:
+
+  /account/{accountID}/transactions: # Endpoint for retrieving a list of transactions associated with an account
     post:
       tags:
         - Accounts and Transactions Module
@@ -145,7 +148,8 @@ paths:
           description: Account not found
         '500':
           description: Internal Server Error
-  /transactions/{transactionID}/category:
+
+  /transactions/{transactionID}/category: # Endpoint for updating the category of a transaction
     put:
       tags:
         - Accounts and Transactions Module
@@ -176,7 +180,8 @@ paths:
           description: Transaction not found
         '500':
           description: Internal Server Error
-  /transactions/{transactionID}/note:
+
+  /transactions/{transactionID}/note: # Endpoint for adding a note to a transaction
     post:
       tags:
         - Accounts and Transactions Module
@@ -207,7 +212,8 @@ paths:
           description: Note not created
         '500':
           description: Internal Server Error
-  /transactions/{transactionID}/note/{noteID}:
+
+  /transactions/{transactionID}/note/{noteID}: #Endpoint for modifying a note of a transaction 
     put:
       tags:
         - Accounts and Transactions Module
@@ -243,8 +249,8 @@ paths:
           description: Note not modified
         '500':
           description: Internal Server Error
-          
-    delete:
+
+    delete: # Endpoint for deleting a note of a transaction
       tags:
         - Accounts and Transactions Module
       summary: Delete transaction's note
