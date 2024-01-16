@@ -8,7 +8,7 @@ import { fetchUserProfile } from './redux/authThunks'; // import the action to f
 
 import HomePage from './pages/home/home';
 import Login from './pages/login/login';
-import User from './pages/user/user';
+import User from './pages/profile/profile';
 import Error from './pages/error/error';
 
 import NavBar from './components/NavBar/NavBar';
@@ -36,16 +36,12 @@ function App() {
     return (
         <div className="app-container">
             <NavBar />
-            
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/login" element={isLoggedIn ? <Navigate to="/user" /> : <Login />} />
-                <Route path="/user" element={isLoggedIn ? <User /> : <Navigate to="/login" />} />
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/login" element={isLoggedIn ? <Navigate to="/profile" /> : <Login />} />
+                <Route path="/profile" element={isLoggedIn ? <User /> : <Navigate to="/login" />} />
                 <Route path="*" element={<Error />} />
-                
-
-                </Routes>
-           
+            </Routes>
             <Footer />
         </div>
     );

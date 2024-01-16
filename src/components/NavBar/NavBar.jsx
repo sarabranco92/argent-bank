@@ -27,7 +27,7 @@ function NavBar() {
             </Link>
             {isLoggedIn ? (
                 <div className='connected'>
-                    <Link to='/user'>
+                    <Link to='/profile'>
                         <i className='fa fa-user-circle sign-in-icon' />
                         <p>{username}</p>
                     </Link>

@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateUserName } from '../../redux/authThunks';
 import Account from '../../components/Account/Account';
-import "../user/_user.scss";
+import "./_profile.scss";
 import "../../assets/_main.scss";
 import AccountData from "../../data/Account.json";
 
 const User = () => {
 
-    const token = sessionStorage.getItem('token'); 
+    const token = sessionStorage.getItem('token');
 
     const dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ const User = () => {
     const [newUserName, setNewUserName] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    
+
     const [isUpdating, setIsUpdating] = useState(false);
 
     useEffect(() => {
@@ -27,10 +27,10 @@ const User = () => {
             setFirstName(userData.firstName);
             setLastName(userData.lastName);
         }
-    }, [userData.userName]);
+    }, [userData.userName, userData.firstName, userData.lastName]);
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
         setIsUpdating(true); // Start loading state
         try {
             await dispatch(updateUserName({ token, newUserName, firstName, lastName })).unwrap();
@@ -54,15 +54,15 @@ const User = () => {
                     <div>
                         <h2>Edit User Info</h2>
                         <form onSubmit={handleSubmit}>
-                        <div className="edit-profile">
-                            <label htmlFor="username">User name:</label>
-                            <input
-                                type="text"
-                                id="username"
-                                value={newUserName}
-                                onChange={(e) => setNewUserName(e.target.value)}
-                                disabled={isUpdating}
-                            />
+                            <div className="edit-profile">
+                                <label htmlFor="username">User name:</label>
+                                <input
+                                    type="text"
+                                    id="username"
+                                    value={newUserName}
+                                    onChange={(e) => setNewUserName(e.target.value)}
+                                    disabled={isUpdating}
+                                />
                             </div>
                             <div className="edit-profile">
                                 <label htmlFor="firstname">First Name:</label>
@@ -97,11 +97,11 @@ const User = () => {
             </div>
 
             {AccountData.map((data) => (
-                <Account 
-                key={data.id} 
-                title={data.title} 
-                amount={data.amount} 
-                description={data.description} 
+                <Account
+                    key={data.id}
+                    title={data.title}
+                    amount={data.amount}
+                    description={data.description}
                 />
             ))}
         </main>
