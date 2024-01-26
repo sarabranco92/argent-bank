@@ -1,11 +1,12 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 
+// État initial du slice d'authentification
 const initialState = {
-  isLoggedIn: false,
-  user: null,
-  error: null,
-  token: null,
+  isLoggedIn: false, // Indique si l'utilisateur est connecté
+  user: null,        // Informations sur l'utilisateur connecté
+  error: null,       // Gestion des erreurs d'authentification
+  token: null,       // Token d'authentification de l'utilisateur
 };
 
 export const authSlice = createSlice({
@@ -13,18 +14,19 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
 
-
+  // Reducer pour gérer le succès de la connexion
     loginSuccess: (state, action) => {
-      state.isLoggedIn = true;
-      state.token = action.payload.token; // Access token directly
-      state.user = action.payload.user; 
-      state.error = null;
+      state.isLoggedIn = true;              // Met à jour l'état de connexion
+      state.token = action.payload.token;   // Sauvegarde le token
+      state.user = action.payload.user;     // Sauvegarde les infos utilisateur
+      state.error = null;                   // Réinitialise les erreurs
     },
     
+    // Reducer pour gérer la déconnexion
     logout: (state) => {
-      state.isLoggedIn = false;
-      state.user = null;
-      state.error = null;
+      state.isLoggedIn = false; // Réinitialise l'état de connexion
+      state.user = null;        // Supprime les infos utilisateur
+      state.error = null;       // Réinitialise les erreurs
     },
   },
 });

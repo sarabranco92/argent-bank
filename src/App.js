@@ -1,9 +1,9 @@
 
-import { Routes, Route, Navigate, HashRouter } from 'react-router-dom';
+import { Routes, Route, Navigate} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
 import { loginSuccess } from './redux/reducers/authSlice';
-import { fetchUserProfile } from './redux/authThunks'; // import the action to fetch user data
+import { fetchUserProfile } from './redux/authThunks'; 
 
 
 import HomePage from './pages/home/home';
@@ -23,7 +23,7 @@ function App() {
     useEffect(() => {
         const token = sessionStorage.getItem('token');
         if (token) {
-            // Dispatch an action to fetch user profile data
+            
             dispatch(fetchUserProfile(token))
                 .then(action => {
                     if (action.type.endsWith('fulfilled')) {
@@ -35,7 +35,7 @@ function App() {
 
     return (
         <div className="app-container">
-            <HashRouter>
+           
             <NavBar />
             <Routes>
                 <Route path="/" element={<HomePage />} />
@@ -44,7 +44,6 @@ function App() {
                 <Route path="*" element={<Error />} />
             </Routes>
             <Footer />
-            </HashRouter>
         </div>
     );
 }

@@ -22,12 +22,12 @@ function HomePage () {
                 <h2 className="sr-only">Features</h2>
                 {ItemData.map((data) => (
                         < Feature 
-                            key={data.id}
-                            image={imageData[data.image]}
-                            descriptionImage={data.descriptionImage}
-                            title={data.title}
-                            description={data.description}
-                        />
+                        key={data.id} // Clé unique pour chaque fonctionnalité (requis dans les listes)
+                        image={imageData[data.image]} // Image correspondant à la fonctionnalité
+                        descriptionImage={data.descriptionImage} // Description de l'image (cette propriété semble inutilisée dans le composant Feature)
+                        title={data.title} // Titre de la fonctionnalité
+                        description={data.description} // Description de la fonctionnalité
+                    />
                         ))}
                 
             </section>

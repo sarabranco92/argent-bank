@@ -15,42 +15,44 @@ function Login() {
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
-
+    // Initialisation de la fonction dispatch pour envoyer des actions au store Redux
     const dispatch = useDispatch();
 
+    const handleLogin = async (e) => {
+        e.preventDefault(); // Empêcher le comportement par défaut du formulaire
+        setErrorMessage(''); // Réinitialiser le message d'erreur
 
-const handleLogin = async (e) => {
-    e.preventDefault();
-    setErrorMessage('');
-    
-    try {
-        const rememberMe = document.getElementById('remember-me').checked;
-        console.log("Remember Me Checked:", rememberMe);
+        try {
+            const rememberMe = document.getElementById('remember-me').checked;
+            console.log("Remember Me Checked:", rememberMe);
 
-        const response = await dispatch(loginUser({ email, password })).unwrap();
+            // Appel du thunk loginUser pour effectuer la connexion
+            const response = await dispatch(loginUser({ email, password })).unwrap();
 
-        // Save the token to local storage if 'Remember Me' is checked
-        if (rememberMe) {
-            localStorage.setItem('userToken', response.token);
-        }
-
-        // Dispatch login success action
-        dispatch(loginSuccess({
-            token: response.token,
-            user: {} 
-        }));
-
-        // Fetch the user profile after successful login
-        dispatch(fetchUserProfile(response.token)).then((action) => {
-            if (action.type === 'user/fetchUserProfile/fulfilled') {
-                dispatch(setUserProfile(action.payload));
+            // Sauvegarder le token dans le localStorage si 'Se souvenir de moi' est coché
+            if (rememberMe) {
+                localStorage.setItem('userToken', response.token);
             }
-        });
-    } catch (error) {
-        setErrorMessage(error.message || 'Failed to login. Please try again.');
-    }
-};
-  
+
+            // Dispatcher l'action de succès de connexion
+            dispatch(loginSuccess({
+                token: response.token,
+                user: {}
+            }));
+
+            // Récupérer le profil utilisateur après une connexion réussie
+            dispatch(fetchUserProfile(response.token)).then((action) => {
+                if (action.type === 'user/fetchUserProfile/fulfilled') {
+                    // Mettre à jour le profil utilisateur dans le store Redux
+                    dispatch(setUserProfile(action.payload));
+                }
+            });
+        } catch (error) {
+            // Gérer les erreurs et afficher un message d'erreur
+            setErrorMessage(error.message || 'Failed to login. Please try again.');
+        }
+    };
+
     return (
         <main className="main bg-dark">
             <section className="sign-in-content">

@@ -1,5 +1,7 @@
 import React from 'react';
 import "../HeroSection/_HeroSection.scss"; 
+
+// Import images for different screen sizes
 import heroImageSmall from '../../assets/img/bank-tree-small.webp';
 import heroImageMedium from '../../assets/img/bank-tree-medium.webp';
 import heroImageLarge from '../../assets/img/bank-tree-large.webp';

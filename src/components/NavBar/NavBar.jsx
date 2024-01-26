@@ -11,6 +11,7 @@ function NavBar() {
     const isLoggedIn = useSelector((state) => state.auth?.isLoggedIn);
     const username = useSelector((state) => state.user.userData.userName);
 
+ // Initialize dispatch function for dispatching actions to the Redux store
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

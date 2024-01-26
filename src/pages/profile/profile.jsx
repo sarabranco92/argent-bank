@@ -7,20 +7,22 @@ import "../../assets/_main.scss";
 import AccountData from "../../data/Account.json";
 
 const User = () => {
-
+// Récupération du token de session
     const token = sessionStorage.getItem('token');
-
+    // Initialisation de dispatch pour envoyer des actions à Redux
     const dispatch = useDispatch();
-
+    // Récupération des données utilisateur depuis le store Redux
     const userData = useSelector((state) => state.user.userData);
 
-    const [display, setDisplay] = useState(true);
-    const [newUserName, setNewUserName] = useState('');
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
+ // Déclaration des états locaux
+ const [display, setDisplay] = useState(true); // Contrôle de l'affichage du formulaire
+ const [newUserName, setNewUserName] = useState(''); // Nouveau nom d'utilisateur
+ const [firstName, setFirstName] = useState(''); // Prénom
+ const [lastName, setLastName] = useState(''); // Nom
+ const [isUpdating, setIsUpdating] = useState(false); // Indicateur de mise à jour
 
-    const [isUpdating, setIsUpdating] = useState(false);
 
+     // Mise à jour des états locaux lorsque les données utilisateur changent
     useEffect(() => {
         if (userData.userName) {
             setNewUserName(userData.userName);
@@ -29,16 +31,18 @@ const User = () => {
         }
     }, [userData.userName, userData.firstName, userData.lastName]);
 
+        // Gestionnaire de soumission du formulaire
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsUpdating(true); // Start loading state
+        setIsUpdating(true); 
         try {
+            // Mise à jour du nom d'utilisateur via le thunk updateUserName
             await dispatch(updateUserName({ token, newUserName, firstName, lastName })).unwrap();
-            setDisplay(true); // Hide the form and show the username again
+            setDisplay(true); // Retour à l'affichage initial
         } catch (error) {
             console.error("Failed to update username:", error);
         } finally {
-            setIsUpdating(false); // End loading state
+            setIsUpdating(false); // Indiquer que la mise à jour est terminée
         }
     };
 

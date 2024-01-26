@@ -31,10 +31,10 @@ a {
 
 
 .routes-container {
-  flex: 1; // Routes container takes up all available space
+  flex: 1; 
 }
 
-// Footer should not shrink
+
 footer {
   flex-shrink: 0;
 }
