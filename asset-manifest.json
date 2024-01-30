@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/argent-bank/static/css/main.19c3f4df.css",
+    "main.js": "/argent-bank/static/js/main.3bff8650.js",
+    "static/media/bank-tree-large.webp": "/argent-bank/static/media/bank-tree-large.6cb93949fa28edef6285.webp",
+    "static/media/404-page.webp": "/argent-bank/static/media/404-page.936764f05bbb7d3043b9.webp",
+    "static/media/bank-tree-medium.webp": "/argent-bank/static/media/bank-tree-medium.a0512fbcf4014845db05.webp",
+    "static/media/icon-security.webp": "/argent-bank/static/media/icon-security.e65dabc16d09db382b09.webp",
+    "static/media/bank-tree-small.webp": "/argent-bank/static/media/bank-tree-small.f8fb236655277054ab5c.webp",
+    "static/media/argentBankLogo.webp": "/argent-bank/static/media/argentBankLogo.0cbfb732efa88c974b48.webp",
+    "static/media/icon-chat.webp": "/argent-bank/static/media/icon-chat.98c41929146d9fa56251.webp",
+    "static/media/icon-money.webp": "/argent-bank/static/media/icon-money.8e5649a2bd2fb3ed4e71.webp",
+    "index.html": "/argent-bank/index.html",
+    "main.19c3f4df.css.map": "/argent-bank/static/css/main.19c3f4df.css.map",
+    "main.3bff8650.js.map": "/argent-bank/static/js/main.3bff8650.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.19c3f4df.css",
+    "static/js/main.3bff8650.js"
+  ]
+}
