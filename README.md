@@ -28,3 +28,7 @@ Ce projet implique la création d'un système d'authentification des utilisateur
 - **Interaction avec une API:** Échanger et manipuler des données avec une API.
 - **Modélisation d'une API:** Concevoir des APIs répondant à des besoins fonctionnels spécifiques.
 - **Authentification:** Mettre en place des méthodes d'authentification sécurisées dans une API.
+
+## Setup and maintenance guide
+
+See the [project guide](docs/PROJECT_GUIDE.md) for repository-specific setup, commands, configuration, implementation limits and verification steps.
